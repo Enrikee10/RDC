@@ -1,7 +1,9 @@
+let userEmail;
+
 function register(event) {
     event.preventDefault();
     const username = document.getElementById('username').value;
-    const email = document.getElementById('email').value;
+    userEmail = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     let valid = true;
 
@@ -12,7 +14,7 @@ function register(event) {
         document.getElementById('usernameError').style.display = 'none';
     }
 
-    if (!email) {
+    if (!userEmail) {
         document.getElementById('emailError').style.display = 'block';
         valid = false;
     } else {
@@ -35,6 +37,8 @@ function register(event) {
 
 function logout() {
     document.getElementById('welcomeSection').style.display = 'none';
+    document.getElementById('reportForm').style.display = 'none';
+    document.getElementById('confirmationMessage').style.display = 'none';
     document.getElementById('registerForm').style.display = 'block';
 }
 
@@ -78,8 +82,8 @@ function submitReport(event) {
     }
 
     if (valid) {
-        alert('Denuncia enviada con éxito.');
         document.getElementById('reportForm').style.display = 'none';
-        document.getElementById('welcomeSection').style.display = 'block';
+        document.getElementById('confirmationEmail').innerText = userEmail;
+        document.getElementById('confirmationMessage').style.display = 'block';
     }
 }
