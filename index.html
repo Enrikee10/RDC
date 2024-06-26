@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RDC</title>
+    <title>Registro y Bienvenida</title>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
 </head>
@@ -12,7 +12,7 @@
         <h2>Registro</h2>
         <form onsubmit="register(event)">
             <div class="form-group">
-                <label for="username">Nombre</label>
+                <label for="username">Nombre de usuario</label>
                 <input type="text" id="username" name="username" required>
                 <div class="error" id="usernameError">El nombre de usuario es requerido.</div>
             </div>
@@ -37,8 +37,8 @@
                 <option value="MINEDU">MINEDU</option>
                 <option value="MINSA">MINSA</option>
                 <option value="Gobierno de Trujillo">Gobierno de Trujillo</option>
-                <option value="Gobierno Regional de La Libertad">Gobierno Regional de La Libertad</option>
-                <option value="MINJUS">MINJUS</option>
+                <option value="Laive">Laive</option>
+                <option value="Gloria">Gloria</option>
                 <option value="Gobierno de Lima">Gobierno de Lima</option>
             </select>
             <button onclick="searchEntity()">Buscar</button>
@@ -76,6 +76,16 @@
             </div>
             <button type="submit" class="btn">Enviar Denuncia</button>
         </form>
+    </div>
+    <div class="container confirmation" id="confirmationMessage">
+        <h2>Denuncia Enviada</h2>
+        <p class="confirmation-message">
+            Su denuncia fue enviada con éxito. Recibirá una respuesta dentro de 3 a 5 días hábiles al correo
+            <span class="confirmation-email" id="confirmationEmail"></span>.
+        </p>
+        <div class="logout">
+            <button onclick="logout()">Cerrar Sesión</button>
+        </div>
     </div>
 </body>
 </html>
