@@ -1,4 +1,4 @@
-let userEmail;
+let userEmail = '';
 
 function register(event) {
     event.preventDefault();
@@ -29,8 +29,34 @@ function register(event) {
     }
 
     if (valid) {
-        document.getElementById('welcomeMessage').innerText = 'Bienvenido ' + username;
         document.getElementById('registerForm').style.display = 'none';
+        document.getElementById('dniVerificationForm').style.display = 'block';
+    }
+}
+
+function verifyDNI(event) {
+    event.preventDefault();
+    const dniFront = document.getElementById('dniFront').files.length;
+    const dniBack = document.getElementById('dniBack').files.length;
+    let valid = true;
+
+    if (dniFront === 0) {
+        document.getElementById('dniFrontError').style.display = 'block';
+        valid = false;
+    } else {
+        document.getElementById('dniFrontError').style.display = 'none';
+    }
+
+    if (dniBack === 0) {
+        document.getElementById('dniBackError').style.display = 'block';
+        valid = false;
+    } else {
+        document.getElementById('dniBackError').style.display = 'none';
+    }
+
+    if (valid) {
+        document.getElementById('dniVerificationForm').style.display = 'none';
+        document.getElementById('welcomeMessage').innerText = 'Bienvenido ' + document.getElementById('username').value;
         document.getElementById('welcomeSection').style.display = 'block';
     }
 }
@@ -40,11 +66,6 @@ function logout() {
     document.getElementById('reportForm').style.display = 'none';
     document.getElementById('confirmationMessage').style.display = 'none';
     document.getElementById('registerForm').style.display = 'block';
-}
-
-function searchEntity() {
-    const entity = document.getElementById('entitySelect').value;
-    document.getElementById('entityResult').innerText = 'Entidad seleccionada: ' + entity;
 }
 
 function showReportForm() {
