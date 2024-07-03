@@ -1,8 +1,9 @@
+/* (sin cambios, ya incluye todos los estilos necesarios) */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 body {
     font-family: 'Roboto', Arial, sans-serif;
-    background-color: #007bff;
+    background-color: #f0f0f0;
     margin: 0;
     padding: 0;
     overflow: hidden;
@@ -85,7 +86,7 @@ h2, h3 {
     font-size: 12px;
 }
 
-.welcome, .report, .confirmation {
+.welcome, .dni-verification, .report, .confirmation {
     display: none;
 }
 
@@ -171,4 +172,15 @@ h2, h3 {
 .confirmation-email {
     font-weight: bold;
     color: #007bff;
+}
+
+.checkmark {
+    display: block;
+    margin: 0 auto;
+    width: 50px;
+    height: 50px;
+    background-image: url('checkmark.png'); /* Ruta de la imagen del checkmark */
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-top: 20px;
 }
