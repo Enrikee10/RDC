@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RDC</title>
+    <title>Registro y Bienvenida</title>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
 </head>
@@ -12,9 +12,9 @@
         <h2>Registro</h2>
         <form onsubmit="register(event)">
             <div class="form-group">
-                <label for="username">Nombre</label>
+                <label for="username">Nombre de usuario</label>
                 <input type="text" id="username" name="username" required>
-                <div class="error" id="usernameError">El nombre es requerido.</div>
+                <div class="error" id="usernameError">El nombre de usuario es requerido.</div>
             </div>
             <div class="form-group">
                 <label for="email">Correo electrónico</label>
@@ -29,19 +29,37 @@
             <button type="submit" class="btn">Registrarse</button>
         </form>
     </div>
+    <div class="container dni-verification" id="dniVerificationForm">
+        <h2>Verificación de DNI</h2>
+        <form onsubmit="verifyDNI(event)">
+            <div class="form-group">
+                <label for="dniFront">DNI (Parte frontal)</label>
+                <input type="file" id="dniFront" name="dniFront" accept="image/*" required>
+                <div class="error" id="dniFrontError">La imagen del DNI (Parte frontal) es requerida.</div>
+            </div>
+            <div class="form-group">
+                <label for="dniBack">DNI (Parte trasera)</label>
+                <input type="file" id="dniBack" name="dniBack" accept="image/*" required>
+                <div class="error" id="dniBackError">La imagen del DNI (Parte trasera) es requerida.</div>
+            </div>
+            <button type="submit" class="btn">Verificar</button>
+        </form>
+    </div>
     <div class="container welcome" id="welcomeSection">
         <h3 id="welcomeMessage"></h3>
         <div class="search-group">
             <select id="entitySelect">
                 <option value="">Seleccione una entidad</option>
-                <option value="MINEDU">MINEDU</option>
-                <option value="MINSA">MINSA</option>
-                <option value="Gobierno de Trujillo">Gobierno de Trujillo</option>
-                <option value="Gobierno Regional de La Libertad">Gobierno Regional de La Libertad</option>
-                <option value="MINJUS">MINJUS</option>
-                <option value="Gobierno de Lima">Gobierno de Lima</option>
+                <option value="Fiscalía">Fiscalía</option>
+                <option value="Ministerio Público">Ministerio Público</option>
+                <option value="Fiscalía de la Nación">Fiscalía de la Nación</option>
+                <option value="La Comisión de Alto Nivel Anticorrupción">La Comisión de Alto Nivel Anticorrupción</option>
+                <option value="El Banco Mundial">El Banco Mundial</option>
+                <option value="FMI">FMI</option>
+                <option value="Ministerio Público Contraloría General del Estado">Ministerio Público Contraloría General del Estado</option>
+                <option value="Unidad de Investigaciones Financieras">Unidad de Investigaciones Financieras</option>
+                <option value="Procuraduría General del Estado">Procuraduría General del Estado</option>
             </select>
-            <button onclick="searchEntity()">Buscar</button>
         </div>
         <div class="entity-result" id="entityResult"></div>
         <div class="report-group">
@@ -60,32 +78,27 @@
                     <option value="">Seleccione un motivo</option>
                     <option value="Lavado de activos">Lavado de activos</option>
                     <option value="Corrupción">Corrupción</option>
+                    <option value="Estafa">Estafa</option>
                     <option value="Otro">Otro</option>
                 </select>
-                <div class="error" id="motiveError">El motivo de la denuncia es requerido.</div>
+                <div class="error" id="motiveError">El motivo es requerido.</div>
             </div>
             <div class="form-group">
-                <label for="description">Añada una breve descripción</label>
-                <textarea id="description" name="description" maxlength="600"></textarea>
-                <div class="error" id="descriptionError">La descripción es requerida para la opción 'Otro'.</div>
+                <label for="description">Descripción (si eligió "Otro")</label>
+                <textarea id="description" name="description"></textarea>
+                <div class="error" id="descriptionError">La descripción es requerida si seleccionó "Otro".</div>
             </div>
             <div class="form-group">
-                <label for="evidence">Adjunta la evidencia</label>
-                <input type="file" id="evidence" name="evidence" required>
-                <div class="error" id="evidenceError">Adjuntar evidencia es obligatorio.</div>
+                <label for="evidence">Evidencia</label>
+                <input type="file" id="evidence" name="evidence" accept="image/*" required>
+                <div class="error" id="evidenceError">La evidencia es requerida.</div>
             </div>
             <button type="submit" class="btn">Enviar Denuncia</button>
         </form>
     </div>
     <div class="container confirmation" id="confirmationMessage">
-        <h2>Denuncia Enviada</h2>
-        <p class="confirmation-message">
-            Su denuncia fue enviada con éxito. Recibirá una respuesta dentro de 3 a 5 días hábiles al correo
-            <span class="confirmation-email" id="confirmationEmail"></span>.
-        </p>
-        <div class="logout">
-            <button onclick="logout()">Cerrar Sesión</button>
-        </div>
+        <h2>¡Denuncia Enviada!</h2>
+        <p class="confirmation-message">Tu denuncia ha sido enviada con éxito. Recibirás una respuesta de 3 a 5 días hábiles al correo <span class="confirmation-email" id="confirmationEmail"></span>.</p>
     </div>
 </body>
 </html>
